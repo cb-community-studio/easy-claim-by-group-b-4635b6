@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-
 import { connect } from "react-redux";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Link, useHistory } from "react-router-dom";
+import AppTopbar from "../../AppTopbar";
 
 const LoginPage = (props) => {
     const [email, setEmail] = useState("");
@@ -46,7 +46,8 @@ const LoginPage = (props) => {
     };
 
     return (
-        <div className="grid p-fluid flex flex-column align-items-center h-screen">
+        <div className="grid p-fluid flex flex-column align-items-center">
+            <AppTopbar/>
             <div className="col-12 lg:col-6 xl:col-4">
                 <div className="card flex flex-column align-items-center">
                     <div className="grid col-12 xl:col-8 flex flex-column align-items-center">
@@ -78,6 +79,8 @@ const LoginPage = (props) => {
         </div>
     );
 };
+
+
 
 const mapState = (state) => {
     const { isLoggedIn } = state.auth;

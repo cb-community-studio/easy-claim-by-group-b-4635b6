@@ -70,7 +70,7 @@ const SignUpPage = (props) => {
         });
     };
     return (
-        <div className="grid p-fluid flex flex-column align-items-center h-screen">
+        <div className="grid p-fluid flex flex-column align-items-center">
             <div className="col-12 lg:col-5 px-6">
                 <div className="card">
                     <div>

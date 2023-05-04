@@ -49,7 +49,7 @@ const AppTopbar = (props) => {
                 <div className="cursor-pointer min-w-max flex align-items-end">
                     {/* <img src={"assets/logo/cb-logo.svg"} height={30} className="mb-1" /> */}
                     <h3 className="text-red-500" style={{ fontFamily: "MarlinGeo", fontWeight: "bolder", margin: 0 }}>
-                        react-frontend
+                        Claim Management
                     </h3>
                 </div>
             </Link>
@@ -84,7 +84,7 @@ const AppTopbar = (props) => {
                 {props.isLoggedIn ? (
                     <Button className="p-button-rounded p-button-outlined ml-3" style={{ zIndex: 20 }} icon="pi pi-user" label={props.user?.email} onClick={toggleUserMenu} aria-controls="user-popup-menu" aria-haspopup />
                 ) : (
-                    <Button label="login" className="p-button-rounded" onClick={() => history.push("/login")} />
+                    <Button label="Login" className="p-button" onClick={() => history.push("/login")} />
                 )}
             </ul>
             <Menu

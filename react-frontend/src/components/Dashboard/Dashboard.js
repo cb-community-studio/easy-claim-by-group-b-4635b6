@@ -1,51 +1,23 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import welcomeImg from "../../assets/media/welcome-banner.png";
+import { useHistory } from "react-router-dom";
+import { Button } from "primereact/button";
 
 const Dashboard = (props) => {
     const history = useHistory();
-    useEffect(() => {}, []);
+    useEffect(() => { }, []);
 
     return (
-        <div className="col-12 flex flex-column align-items-center">
-            <div className="flex w-10">
-                <div className=" w-8">
-                    <h4 className="ml-4">Microservices Ready</h4>
-                    <div className="w-full flex justify-content-center flex-wrap ">
-                        <></>
-                <div className='col-12 lg:col-6 xl:col-4'><Link to='/users'><div className='card mb-0 flex flex-column align-items-center justify-content-center hover zoom' style={{ height: '10rem' }}><div className='text-900 font-medium text-lg'>Users</div></div></Link></div>
-                <div className='col-12 lg:col-6 xl:col-4'><Link to='/claim'><div className='card mb-0 flex flex-column align-items-center justify-content-center hover zoom' style={{ height: '10rem' }}><div className='text-900 font-medium text-lg'>Claim</div></div></Link></div>
-                        {/* ~cb-add-services-card~ */}
-                    </div>
-                </div>
-                <div className="w-4 flex flex-column align-items-center">
-                    <img src={welcomeImg} alt="welcome image" className="h-30rem" role="lady-image" />
-                    <p className="text-7xl m-0" role="welcome-text">
-                        Welcome!
-                    </p>
-                    <p>You are ready to go!</p>
-                </div>
-            </div>
-            <div className="card w-10 my-6">
-                <h4>REST API Ready</h4>
-                <p className="underline m-0">e.g. Authentication</p>
-                <p>POST http://localhost:3030/authentication {`{ "email": "example@email.com",    "password": "123456" }`}</p>
-                <p className="underline m-0">e.g. CRUD</p>
-                <p className="m-0">
-                    GET {`=>`} GET http://localhost:3030/users/{`<userId>`}
-                </p>
-                <p className="m-0">
-                    CREATE {`=>`} POST http://localhost:3030/users` {`{ "email": "example2@email.com",    "password": "456789" }`}
-                </p>
-                <p className="m-0">
-                    PATCH {`=>`} PATCH http://localhost:3030/users/{`<userId>`}` {`{ "name": "Thomas Smith" }`}
-                </p>
-                <p className="m-0">
-                    DELETE {`=>`} DELETE http://localhost:3030/users/{`<userId>`}
-                </p>
+
+        <div className="surface-section px-4 py-8 md:px-6 lg:px-8">
+            <div className="text-700 text-center">
+                <div className="text-red-600 font-bold mb-3">&nbsp;WEBSITE FOR CLAIM MANAGEMENT</div>
+                <div className="text-900 font-bold text-5xl mb-3">Login to Continue</div>
+                <div className="text-700 text-xl mb-5">Please contact Administrator at <a href="mailto:admin@claimmanagement.com">admin@claimmanagement.com</a> for registration.</div>
+                <Button label="Login" className="font-bold px-5 py-3 p-button-raised p-button white-space-nowrap" onClick={() => history.push("/login")}></Button>
             </div>
         </div>
+
     );
 };
 const mapState = (state) => {
