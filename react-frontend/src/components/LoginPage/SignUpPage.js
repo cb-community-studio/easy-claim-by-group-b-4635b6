@@ -9,10 +9,12 @@ const SignUpPage = (props) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [phoneNo, setPhoneNo] = useState("");
 
     const [nameError, setNameError] = useState(null);
     const [emailError, setEmailError] = useState(null);
     const [passwordError, setPasswordError] = useState(null);
+    const [phoneNoError, setPhoneNoError] = useState(null);
 
     const [maskPassword, setMaskPassword] = useState(true);
     const history = useHistory();
@@ -41,7 +43,7 @@ const SignUpPage = (props) => {
             isValid = false;
         }
         if (!name.length) {
-            setNameError("name is required");
+            setNameError("Name is required");
             isValid = false;
         } else if (name.length < 3) {
             setNameError("Must be at least 3 characters long");
@@ -52,6 +54,13 @@ const SignUpPage = (props) => {
             isValid = false;
         } else if (password.length < 6) {
             setPasswordError("Must be at least 6 characters long and have at least one letter, digit, uppercase, lowercase and symbol");
+            isValid = false;
+        }
+        if (!phoneNo.length) {
+            setPhoneNoError("Phone Number is required");
+            isValid = false;
+        } else if (phoneNo.length < 10) {
+            setPhoneNoError("Must be at least 10 characters long");
             isValid = false;
         }
 
@@ -110,6 +119,21 @@ const SignUpPage = (props) => {
                                 onKeyDown={onEnter}
                             ></InputText>
                             <small className="p-error">{emailError}</small>
+                        </div>
+                        <div className="col-12 lg:col-8">
+                            <p className="m-0">Phone Number</p>
+                            <InputText
+                                type="text"
+                                placeholder="Enter your phone number"
+                                value={phoneNo}
+                                onChange={(e) => {
+                                    setPhoneNo(e.target.value);
+                                    setPhoneNoError(null);
+                                }}
+                                className={phoneNoError ? "p-invalid" : ""}
+                                onKeyDown={onEnter}
+                            ></InputText>
+                            <small className="p-error">{phoneNoError}</small>
                         </div>
                         <div className="col-12 lg:col-8">
                             <p className="m-0">Password</p>
