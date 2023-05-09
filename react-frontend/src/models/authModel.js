@@ -3,6 +3,7 @@ import client from "../services/restClient";
 const initState = {
     user: {},
     isLoggedIn: false,
+    role: null,
 };
 export const auth = {
     state: {
@@ -24,7 +25,7 @@ export const auth = {
 
                 try {
                     let loginResponse = await client.authenticate({ ...data, strategy: "local" });
-                    this.update({ isLoggedIn: true, user: loginResponse.user });
+                    this.update({ isLoggedIn: true, user: loginResponse.user,  role: loginResponse.user.role });
                     resolve();
                 } catch (error) {
                     console.log("error", { error });
@@ -41,7 +42,7 @@ export const auth = {
                 dispatch.loading.show();
                 try {
                     let loginResponse = await client.reAuthenticate();
-                    this.update({ isLoggedIn: true, user: loginResponse.user });
+                    this.update({ isLoggedIn: true, user: loginResponse.user,  role: loginResponse.user.role });
                     resolve();
                 } catch (error) {
                     console.log("error", { error });

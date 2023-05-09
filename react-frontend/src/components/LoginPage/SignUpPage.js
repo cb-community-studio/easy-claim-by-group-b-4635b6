@@ -9,12 +9,12 @@ const SignUpPage = (props) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [phoneNo, setPhoneNo] = useState("");
+    const [phoneNumber, setphoneNumber] = useState("");
 
     const [nameError, setNameError] = useState(null);
     const [emailError, setEmailError] = useState(null);
     const [passwordError, setPasswordError] = useState(null);
-    const [phoneNoError, setPhoneNoError] = useState(null);
+    const [phoneNumberError, setphoneNumberError] = useState(null);
 
     const [maskPassword, setMaskPassword] = useState(true);
     const history = useHistory();
@@ -56,11 +56,11 @@ const SignUpPage = (props) => {
             setPasswordError("Must be at least 6 characters long and have at least one letter, digit, uppercase, lowercase and symbol");
             isValid = false;
         }
-        if (!phoneNo.length) {
-            setPhoneNoError("Phone Number is required");
+        if (!phoneNumber.length) {
+            setNameError("Phone Number is required");
             isValid = false;
-        } else if (phoneNo.length < 10) {
-            setPhoneNoError("Must be at least 10 characters long");
+        } else if (phoneNumber.length < 10) {
+            setphoneNumberError("Must be at least 10 characters long");
             isValid = false;
         }
 
@@ -125,15 +125,15 @@ const SignUpPage = (props) => {
                             <InputText
                                 type="text"
                                 placeholder="Enter your phone number"
-                                value={phoneNo}
+                                value={phoneNumber}
                                 onChange={(e) => {
-                                    setPhoneNo(e.target.value);
-                                    setPhoneNoError(null);
+                                    setphoneNumber(e.target.value);
+                                    setphoneNumberError(null);
                                 }}
-                                className={phoneNoError ? "p-invalid" : ""}
+                                className={phoneNumberError ? "p-invalid" : ""}
                                 onKeyDown={onEnter}
                             ></InputText>
-                            <small className="p-error">{phoneNoError}</small>
+                            <small className="p-error">{phoneNumberError}</small>
                         </div>
                         <div className="col-12 lg:col-8">
                             <p className="m-0">Password</p>
