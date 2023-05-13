@@ -95,7 +95,7 @@ const ClaimPage = (props) => {
     return (
         <div className="col-12 flex flex-column align-items-center">
             <div className="col-10">
-                <h3 className="mb-0 ml-2">Claim</h3>
+                {/* <h3 className="mb-0 ml-2">Claim</h3> */}
                 <div className="col flex justify-content-end">
                     <Button label="add" icon="pi pi-plus" onClick={() => setShowCreateDialog(true)} role="claim-add-button"/>
                     <SplitButton model={menuItems} dropdownIcon="pi pi-ellipsis-v" buttonClassName="hidden" menuButtonClassName="ml-1 p-button-text"></SplitButton>

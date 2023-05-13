@@ -3,6 +3,7 @@ import { connect, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Button } from "primereact/button";
 // import { auth } from "../../models/authModel";
+import UserDashboard from "./UserDashboard";
 
 const Dashboard = () => {
     const history = useHistory();
@@ -18,7 +19,8 @@ const Dashboard = () => {
                 {user.role === "admin" ? (
                     <div>Admin Dashboard</div>
                 ) : (
-                    <div>User Dashboard</div>
+                    // <div>User Dashboard</div>
+                    <UserDashboard/>
                 )}
             </div>
             ) : (

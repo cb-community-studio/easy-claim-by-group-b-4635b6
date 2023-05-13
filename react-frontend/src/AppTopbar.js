@@ -1,13 +1,15 @@
 import React, { useRef } from "react";
 import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation} from "react-router-dom";
 import classNames from "classnames";
 import { Button } from "primereact/button";
 import { Menu } from "primereact/menu";
+import { BreadCrumb } from 'primereact/breadcrumb';
 
 const AppTopbar = (props) => {
     const history = useHistory();
     const userMenuRef = useRef(null);
+    const location = useLocation();
 
     const toggleUserMenu = (e) => userMenuRef.current.toggle(e);
     const items = [
@@ -34,6 +36,21 @@ const AppTopbar = (props) => {
         },
     ];
 
+    const itemsBreadCrumb = [
+        {
+            label: "Account",
+            icon: "pi pi-flag",
+            command: () => history.push("/account"),
+        },
+        {
+            label: "Account",
+            icon: "pi pi-flag",
+            command: () => history.push("/account"),
+        },
+    ];
+
+    const home = { icon: 'pi pi-home', url: 'http://localhost:3000/' } // this is hard code
+    
     const onLogout = async () => {
         try {
             await props.logout();
@@ -43,16 +60,27 @@ const AppTopbar = (props) => {
             console.log("error", error);
         }
     };
+
+    const getPageTitle = () => {
+        if (location.pathname === "/account") {
+            return "User Information";
+        } else {
+            return "Claim Management";
+        }
+    };
+
     return (
         <div className="layout-topbar">
             <Link to="/">
                 <div className="cursor-pointer min-w-max flex align-items-end">
                     {/* <img src={"assets/logo/cb-logo.svg"} height={30} className="mb-1" /> */}
                     <h3 className="text-red-500" style={{ fontFamily: "MarlinGeo", fontWeight: "bolder", margin: 0 }}>
-                        Claim Management
+                    {getPageTitle()}
                     </h3>
                 </div>
             </Link>
+            {/* <div className="cursor-pointer min-w-max flex align-items-end"><BreadCrumb model={itemsBreadCrumb} home={home}/></div> */}
+            
 
             {props.showSideMenuButton ? (
                 <button type="button" className="p-link  layout-menu-button layout-topbar-button" onClick={props.onToggleMenuClick}>
@@ -96,6 +124,7 @@ const AppTopbar = (props) => {
                     toggleUserMenu();
                 }}
             />
+            
         </div>
     );
 };
